@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,12 +10,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent{
-  @Input() isCartOpen: boolean = false; 
-
+  constructor(private cart: CartService){}
+  
+  isCartOpen: boolean = this.cart.isCartOpen; 
 
   toggleCart(){
-    this.isCartOpen = !this.isCartOpen;
-    console.log(this.isCartOpen);
+    this.cart.toggleCart();
   }
   
 }

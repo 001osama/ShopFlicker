@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,10 @@ import { CartComponent } from '../cart/cart.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  constructor(private cart: CartService) {
+  }
   isOpen = false;
-  cartOpen = false;
+  cartOpen = this.cart.isCartOpen;
 
 
   toggleMenu() {
@@ -39,6 +42,7 @@ export class HeaderComponent {
   ];
 
   toggleCart(){
+    this.cart.toggleCart();
     console.log(this.cartOpen);
   }
 }
