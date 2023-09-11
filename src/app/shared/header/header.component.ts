@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CartComponent } from '../cart/cart.component';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -24,19 +23,19 @@ export class HeaderComponent {
 
   menuItems = [
   {
-    routerLink: '#',
+    routerLink: '/home',
     name: 'Home'
   },
   {
-    routerLink: '#',
-    name: 'Product'
+    routerLink: '/products',
+    name: 'Products'
   },
   {
-    routerLink: '#',
+    routerLink: '/blog',
     name: 'Blog'
   },
   {
-    routerLink: '#',
+    routerLink: '/about-us',
     name: 'About Us'
   },
   ];
