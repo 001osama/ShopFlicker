@@ -31,12 +31,12 @@ export class HeaderComponent {
     name: 'Products'
   },
   {
-    routerLink: '/blog',
-    name: 'Blog'
+    routerLink: '/about',
+    name: 'About'
   },
   {
-    routerLink: '/about-us',
-    name: 'About Us'
+    routerLink: '/contact',
+    name: 'Contact'
   },
   ];
 

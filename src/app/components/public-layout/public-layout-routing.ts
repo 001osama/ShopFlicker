@@ -16,9 +16,14 @@ export const publicRoutes: Routes = [{
                 import('./products/products.component').then((c)=> c.ProductsComponent)
         },   
         {
-            path: 'about-us',
+            path: 'about',
             loadComponent: () => 
-               import('./about-us/about-us.component').then((c)=> c.AboutUsComponent)
+               import('./about/about.component').then((c)=> c.AboutComponent)
+        },   
+        {
+            path: 'contact',
+            loadComponent: () => 
+               import('./contact/contact.component').then((c)=> c.ContactComponent)
         },   
         {
             path: '',
