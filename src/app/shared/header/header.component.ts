@@ -14,7 +14,6 @@ export class HeaderComponent {
   constructor(private cart: CartService) {
   }
   isOpen = false;
-  cartOpen = this.cart.isCartOpen;
 
 
   toggleMenu() {
@@ -40,8 +39,7 @@ export class HeaderComponent {
   },
   ];
 
-  toggleCart(){
-    this.cart.toggleCart();
-    console.log(this.cartOpen);
+  showCart(){
+    this.cart.showCart();
   }
 }

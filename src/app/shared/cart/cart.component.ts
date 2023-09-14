@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from 'src/app/services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -9,13 +10,17 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent{
+export class CartComponent implements OnInit{
+
+  isCartOpen$: Observable<boolean> | undefined;
+
   constructor(private cart: CartService){}
   
-  isCartOpen: boolean = this.cart.isCartOpen; 
-
-  toggleCart(){
-    this.cart.toggleCart();
+  ngOnInit(): void {
+    this.isCartOpen$ = this.cart.cartStatus()
   }
   
+  closeCart(){
+    this.cart.hideCart();
+  }
 }

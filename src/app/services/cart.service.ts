@@ -1,15 +1,27 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  public isCartOpen = false;
+  private CartOpen$: BehaviorSubject<boolean>;
+  
+  constructor() {
+    this.CartOpen$ = new BehaviorSubject(false);
+    }
 
-  toggleCart() {
-    this.isCartOpen = !this.isCartOpen;
-    console.log(this.isCartOpen);
+  cartStatus(){
+    return this.CartOpen$.asObservable();
   }
 
-  constructor() { }
+  showCart() {
+    this.CartOpen$.next(true);
+  }
+
+  hideCart(){
+    this.CartOpen$.next(false)
+  }
+
+
 }
