@@ -11,7 +11,8 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private cart: CartService) {
+  constructor(private cart: 
+    CartService) {
   }
   isOpen = false;
 
