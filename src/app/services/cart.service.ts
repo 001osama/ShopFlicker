@@ -20,7 +20,7 @@ export class CartService {
   }
 
   hideCart(){
-    this.CartOpen$.next(false)
+    this.CartOpen$.next(false);
   }
 
 
