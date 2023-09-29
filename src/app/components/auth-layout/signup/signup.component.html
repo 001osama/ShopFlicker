@@ -4,9 +4,9 @@
         <div class="text-center text-medium-gray mb-12">
             <p>Already have an account? <a routerLink='../login' class="cursor-pointer text-main-orange hover:text-main-orange-hover">Log in</a></p>
         </div>
-        <form>
+        <form [formGroup]="form">
             <label for="username" class="relative mb-8 block">
-                <input type="text" id="username" placeholder="Username" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
+                <input type="text" id="username" formControlName="username" placeholder="Username" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
                 <span class="absolute top-2 left-4 text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" fill="currentColor" viewBox="0 0 448 512">
                         <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -14,7 +14,7 @@
                 </span>
             </label>
             <label for="email" class="mb-8 block relative">
-                <input type="text" id="email" placeholder="Email" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
+                <input type="text" id="email" formControlName="email" placeholder="Email" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
                 <span class="absolute top-[10px] left-4 text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" fill="currentColor" viewBox="0 0 512 512">
                         <path d="M256 64C150 64 64 150 64 256s86 192 192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256v32c0 53-43 96-96 96c-29.3 0-55.6-13.2-73.2-33.9C320 371.1 289.5 384 256 384c-70.7 0-128-57.3-128-128s57.3-128 128-128c27.9 0 53.7 8.9 74.7 24.1c5.7-5 13.1-8.1 21.3-8.1c17.7 0 32 14.3 32 32v80 32c0 17.7 14.3 32 32 32s32-14.3 32-32V256c0-106-86-192-192-192zm64 192a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"/>
@@ -22,7 +22,7 @@
                 </span>
             </label>
             <label for="password" class="mb-8 block relative">
-                <input type="password" id="password" placeholder="Password" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
+                <input type="password" id="password" formControlName="password" placeholder="Password" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
                 <span class="absolute top-2 left-4 text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" fill="currentColor" viewBox="0 0 448 512">
                         <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
@@ -30,7 +30,7 @@
                 </span>
             </label>
             <label for="confirmPassword" class="mb-8 block relative">
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
+                <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" class="border-medium-gray border-solid border text-dark-gray py-2 px-4 pl-12 rounded-full focus:border-main-orange focus:outline-none focus:ring-1 focus:ring-main-orange w-full">
                 <span class="absolute top-2 left-4 text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" fill="currentColor" viewBox="0 0 448 512">
                         <path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/>
