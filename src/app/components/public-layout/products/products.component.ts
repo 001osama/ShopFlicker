@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemComponent } from "../item/item.component";
+import { BaseService } from 'src/app/services/base.service';
 
 @Component({
     selector: 'app-products',
@@ -9,16 +10,14 @@ import { ItemComponent } from "../item/item.component";
     styleUrls: ['./products.component.scss'],
     imports: [CommonModule, ItemComponent]
 })
-export class ProductsComponent {
-
-    products= [
-        {
-            name: 'Cucumber',
-            price: '19',
-            quantity: '1',
-            src: './assets/_images/_products/cucumber.png'
-        },
-    ]
+export class ProductsComponent implements OnInit {
     
+    products:any;
+    constructor(private baseService:BaseService) {}
 
+    apiUrl = this.baseService.apiUrl;
+
+    ngOnInit(): void {
+        this.baseService.get().subscribe( response => this.products = response.result );
+    }
 }

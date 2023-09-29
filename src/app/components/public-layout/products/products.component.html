@@ -11,7 +11,7 @@
     </section>
     <section class="product-items mb-8">
         <div class="grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 md:gap-10 gap-y-10 gap-x-2">
-            <app-item *ngFor="let product of products" [name]="product.name" [price]="product.price" [src]="product.src"></app-item>
+            <app-item *ngFor="let product of products" [name]="product.name" [price]="product.price" [src]="this.apiUrl + product.imageUrl"></app-item>
         </div>
     </section>
 </section>
