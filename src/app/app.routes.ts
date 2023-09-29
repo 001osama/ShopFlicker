@@ -5,7 +5,7 @@ export const routes: Routes = [
         path:'',
         loadChildren: () => import('./components/public-layout/public-layout-routing').then(
             (r)=> r.publicRoutes
-        ),
+        )
     },
     {
         path:'auth',
@@ -17,6 +17,6 @@ export const routes: Routes = [
         path:'**',
         pathMatch: 'full',
         redirectTo: ''
-    },
+    }
 ];
 

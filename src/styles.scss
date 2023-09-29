@@ -6,14 +6,27 @@
 @tailwind utilities;
 
 
+:root{
+    --primary: #f95c3c;
+    --primary-hover:#bf4830;
+    --secondary: #43484c;
+    --secondary-hover:#2d3033;
+    --tertiary:#979fa7;
+    --tertiary-hover:#747a80;
+    --white:#fafbfc;
+    --white-hover: #cccecf;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
 
+
+
 ::selection {
-    color: #fafbfc;
-    background: #f95c3c;
+    color: var(--white);
+    background: var(--primary);
   }
 
 ::-webkit-scrollbar{
@@ -21,12 +34,12 @@
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #979fa7;
+    background-color: var(--tertiary);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-track{
-    background-color: #43484c;
+    background-color: var(--secondary);
     height: 100%;
 }
 
@@ -38,4 +51,18 @@
     display: none;
 }
 
-
+@layer components{
+    .primary-btn{
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 999px;
+        transition-property: color, background-color;
+        transition-duration:0.5s;
+        transition-timing-function: linear;
+        padding: 8px 40px;
+        &:hover{
+            background-color: var(--primary-hover);
+            color: var(--white-hover);
+        }
+    }
+}
