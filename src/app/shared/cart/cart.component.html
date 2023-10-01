@@ -14,56 +14,17 @@
                 <p class="mr-6">Price</p>
             </div>
             <div class="h-[88%] overflow-y-auto pr-2">
-                <div class="flex justify-between mb-8">
-                    <span class="flex">
-                        <img src="/assets/_images/vegetableImage.jpg" alt="vegetable_image" class="w-[120px] rounded-xl">
+                <div class="flex justify-between mb-8" *ngFor="let cart of carts">
+                    <span class="flex h-[81px] overflow-hidden">
+                        <img [src]="this.apiUrl+cart.product.imageUrl"alt="vegetable_image" class="w-[120px] rounded-xl h-fit">
                         <span class="flex flex-col justify-between mx-8 py-1 text-sm">
-                            <p class="text-offwhite">Cabbage</p>
-                            <p class="text-main-orange">x2</p>
-                            <button class="text-medium-gray hover:text-medium-gray-hover">Remove</button>
+                            <p class="text-offwhite">{{cart.product.name}}</p>
+                            <p class="text-main-orange">x{{cart.quantity}}</p>
+                            <button class="text-medium-gray self-start hover:text-medium-gray-hover" (click)="removeItem(cart.id)">Remove</button>
                         </span>
                     </span>
                     <span class="flex items-center">
-                        <p class="text-offwhite text-sm">29.00 Rs</p>
-                    </span>
-                </div>
-                <div class="flex justify-between mb-8">
-                    <span class="flex">
-                        <img src="/assets/_images/vegetableImage.jpg" alt="vegetable_image" class="w-[120px] rounded-xl">
-                        <span class="flex flex-col justify-between mx-8 py-1 text-sm">
-                            <p class="text-offwhite">Cabbage</p>
-                            <p class="text-main-orange">x2</p>
-                            <button class="text-medium-gray hover:text-medium-gray-hover">Remove</button>
-                        </span>
-                    </span>
-                    <span class="flex items-center">
-                        <p class="text-offwhite text-sm">29.00 Rs</p>
-                    </span>
-                </div>
-                <div class="flex justify-between mb-8">
-                    <span class="flex">
-                        <img src="/assets/_images/vegetableImage.jpg" alt="vegetable_image" class="w-[120px] rounded-xl">
-                        <span class="flex flex-col justify-between mx-8 py-1 text-sm">
-                            <p class="text-offwhite">Cabbage</p>
-                            <p class="text-main-orange">x2</p>
-                            <button class="text-medium-gray hover:text-medium-gray-hover">Remove</button>
-                        </span>
-                    </span>
-                    <span class="flex items-center">
-                        <p class="text-offwhite text-sm">29.00 Rs</p>
-                    </span>
-                </div>
-                <div class="flex justify-between mb-8">
-                    <span class="flex">
-                        <img src="/assets/_images/vegetableImage.jpg" alt="vegetable_image" class="w-[120px] rounded-xl">
-                        <span class="flex flex-col justify-between mx-8 py-1 text-sm">
-                            <p class="text-offwhite">Cabbage</p>
-                            <p class="text-main-orange">x2</p>
-                            <button class="text-medium-gray hover:text-medium-gray-hover">Remove</button>
-                        </span>
-                    </span>
-                    <span class="flex items-center">
-                        <p class="text-offwhite text-sm">29.00 Rs</p>
+                        <p class="text-offwhite text-sm">{{cart.totalPrice | number:'1.2-2'}} Rs</p>
                     </span>
                 </div>
             </div>
@@ -71,7 +32,7 @@
         <footer class="border-t-2 border-medium-gray/25">
             <div class="flex justify-between text-offwhite px-4 py-4">
                 <p>Total</p>
-                <p>120.00 Rs</p>
+                <p>{{totalPrice}} Rs</p>
             </div>
             <button class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">Checkout</button>
         </footer>

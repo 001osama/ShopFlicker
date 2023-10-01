@@ -1,10 +1,10 @@
 <section class="flex flex-col">
     <div class="text-dark-gray">
         <div class="h-28 sm:h-48 overflow-hidden">
-            <img class="sm:hover:scale-100 hover:scale-125  sm:scale-75 duration-700" [src]="src">
+            <img class="sm:hover:scale-100 hover:scale-125  sm:scale-75 duration-700" [src]="apiUrl + product.imageUrl">
         </div>
-        <p class="text-lg text-center mb-2">{{name}}</p>
-        <p class="text-center mb-4">Rs. {{price| number:'1.2-2'}}</p>
+        <p class="text-lg text-center mb-2">{{product.name}}</p>
+        <p class="text-center mb-4">Rs. {{product.price| number:'1.2-2'}}</p>
     </div>
     <div class="flex justify-between items-center border-2 border-main-orange rounded-full py-2 px-6 mb-4">
         <button class="hover:text-main-orange disabled:text-medium-gray" [disabled]="quantity<2" (click)="decreaseQuantity()">
@@ -19,5 +19,5 @@
             </svg>
         </button>
     </div>
-    <button class="bg-main-orange duration-500 text-offwhite rounded-full py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">Add to Cart</button>
+    <button class="bg-main-orange duration-500 text-offwhite rounded-full py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full" (click)="addToCart()">Add to Cart</button>
 </section>

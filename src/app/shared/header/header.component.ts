@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit{
     this.loggedIn = this.authService.IsUserLoggedIn();
   }
 
-
   toggleMenu() {
     this.isOpen = !this.isOpen;
   }
@@ -54,7 +53,7 @@ export class HeaderComponent implements OnInit{
   }
 
   logOut(){
-    localStorage.clear();
+    this.authService.logOut();
     this.loggedIn = false;
   }
 }
