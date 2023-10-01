@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
   standalone: true,
   imports: [CommonModule, RouterLink, ReactiveFormsModule],
   templateUrl: './login.component.html',
-  providers:[AuthService],
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit,OnDestroy{

@@ -4,29 +4,35 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
 
 
-@Injectable()
+@Injectable({
+    providedIn:'root'
+})
 
 export class AuthService{
     url:string = "api/UsersAuth"
     constructor(private _http:HttpClient) {        
     }
 
-    public login(loginReq: Object):Observable<any>{
+    login(loginReq: Object):Observable<any>{
         return this._http.post(`${environment.apiURL}/${this.url}/login`,loginReq);
     }
 
-    public IsUserLoggedIn():boolean{
+    IsUserLoggedIn():boolean{
         if(localStorage.getItem("UserId")){
             return true;
         };
         return false;
     }
 
-    public getAccessToken(){
+    getAccessToken(){
         return localStorage.getItem("Token");
     }
 
-    public register(registerReq: Object):Observable<any>{
+    register(registerReq: Object):Observable<any>{
         return this._http.post(`${environment.apiURL}/${this.url}/register`,registerReq)
+    }
+
+    logOut(){
+        localStorage.clear();
     }
 }

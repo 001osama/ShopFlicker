@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs/internal/Subscription';
   selector: 'app-signup',
   standalone: true,
   imports: [CommonModule, RouterLink, ReactiveFormsModule],
-  providers: [AuthService],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
@@ -31,15 +30,12 @@ export class SignupComponent implements OnInit,OnDestroy{
     });
   }
   
-  
-  
   register(){
     this.subscription = this.authService.register(this.form.value).subscribe(
       () => this.router.navigate(['/login'])
     )
   }
-
-
+  
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
