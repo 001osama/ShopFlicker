@@ -18,7 +18,7 @@ export class AuthService{
     }
 
     IsUserLoggedIn():boolean{
-        if(localStorage.getItem("UserId")){
+        if(this.getAccessToken()){
             return true;
         };
         return false;

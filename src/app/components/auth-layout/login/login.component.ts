@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit,OnDestroy{
       this.result = this.authService.login(this.form.value).subscribe({
         next: res => {
             localStorage.setItem("Token",res.result.token);
-            localStorage.setItem("UserId", res.result.user.id);
           },
         error:(err) => console.error(err),
         complete:() => this.router.navigate(['/products'])
@@ -43,6 +42,8 @@ export class LoginComponent implements OnInit,OnDestroy{
     
 
     ngOnDestroy(): void {
-      this.result.unsubscribe();
+      if(this.result){
+        this.result.unsubscribe();
+      }
     }
 }
