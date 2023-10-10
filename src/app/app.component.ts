@@ -12,6 +12,6 @@ import { CartComponent } from "./shared/cart/cart.component";
     styleUrls: ['./app.component.scss'],
     imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent, CartComponent]
 })
-export class AppComponent {
-  title = 'ShopFlicker';
+export class AppComponent{
+  title = 'ShopFlicker';  
 }
