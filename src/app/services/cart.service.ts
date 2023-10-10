@@ -29,7 +29,6 @@ export class CartService extends BaseService{
   }
 
   addToCart(data:any){
-    console.log(data);
     return this.post(this.url,data);
   }
 
@@ -54,5 +53,9 @@ export class CartService extends BaseService{
 
   hideCart(){
     this.CartOpen$.next(false);
+  }
+
+  checkout():Observable<any>{
+    return this.post("api/Orders",null)
   }
 }

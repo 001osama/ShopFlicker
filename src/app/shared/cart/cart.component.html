@@ -1,4 +1,4 @@
-<section class="cart duration-500 fixed right-0 top-0 z-20 h-screen bg-dark-gray py-4" [ngClass]="(isCartOpen$ | async) ? 'w-full md:w-[60%] lg:w-[40%]' : 'w-0'">
+<section class="cart duration-300 fixed right-0 top-0 z-20 h-screen bg-dark-gray py-4" [ngClass]="(isCartOpen$ | async) ? 'w-full md:w-[60%] lg:w-[40%]' : 'w-0'">
     <div class="px-8 flex flex-col justify-between h-full">
         <header class="border-b-2 border-medium-gray/25 flex justify-between py-8">
             <h2 class="font-poppins font-light text-xl text-offwhite">Shopping Cart</h2>
@@ -8,12 +8,12 @@
                 </svg>
             </button>
         </header>
-        <main class="h-[66%] px-4 pb-8">
+        <main *ngIf="!(this.loader.loaderStatus() | async)" class="h-[66%] px-4 pb-8">
             <div class="heading text-medium-gray flex justify-between py-4">
                 <p>Product Details</p>
                 <p class="mr-6">Price</p>
             </div>
-            <div class="h-[88%] overflow-y-auto pr-2">
+            <div *ngIf="carts.length; else emptyCart" class="h-[88%] overflow-y-auto pr-2">
                 <div class="flex justify-between mb-8" *ngFor="let cart of carts">
                     <span class="flex h-[81px] overflow-hidden">
                         <img [src]="this.apiUrl+cart.product.imageUrl"alt="vegetable_image" class="w-[120px] rounded-xl h-fit">
@@ -28,13 +28,21 @@
                     </span>
                 </div>
             </div>
+            <ng-template #emptyCart>
+                <div class="h-[88%] flex justify-center items-center">
+                    <h4 class="text-medium-gray text-lg">Cart is empty!</h4>
+                </div>
+            </ng-template>
         </main>
+        <app-loader></app-loader>
         <footer class="border-t-2 border-medium-gray/25">
             <div class="flex justify-between text-offwhite px-4 py-4">
                 <p>Total</p>
                 <p>{{totalPrice}} Rs</p>
             </div>
-            <button class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">Checkout</button>
+            <button (click)="checkout()" class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">Checkout</button>
         </footer>
     </div>
+    <app-loader *ngIf="this.isCartOpen$ | async"></app-loader>
+
 </section>
