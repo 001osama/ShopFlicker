@@ -10,13 +10,14 @@
         </label>
     </section>
     <section class="product-items mb-8">
-        <div *ngIf="products.length; else notFound" class="grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 md:gap-10 gap-y-10 gap-x-2">
+        <div *ngIf="products.length" class="grid grid-cols-2 grid-rows-4 md:grid-cols-4 md:grid-rows-2 md:gap-10 gap-y-10 gap-x-2">
             <app-item (cartItem)="addToCart($event)" *ngFor="let product of products" [product]="product"></app-item>
         </div>
-        <ng-template #notFound>
-            <div class="h-full">
-                Not Found
+        <!-- <ng-template #notFound>
+            <div class="h-[60vh] flex justify-center items-center">
+                <h4 class="text-medium-gray text-3xl">Not Found</h4>
             </div>
-        </ng-template>
+        </ng-template> -->
+        <app-loader></app-loader>
     </section>
 </section>
