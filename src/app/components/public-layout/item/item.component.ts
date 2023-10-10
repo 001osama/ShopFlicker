@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
 import { AddCartItem } from 'src/app/models/addCartItem';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-item',
@@ -14,7 +15,7 @@ import { AddCartItem } from 'src/app/models/addCartItem';
 })
 export class ItemComponent {
 
-  constructor(private _router:Router) {
+  constructor(private _router:Router, private _authService: AuthService) {
   }
 
   @Output() cartItem = new EventEmitter<AddCartItem>();
@@ -31,8 +32,8 @@ export class ItemComponent {
   }
 
   addToCart(){
-    const userId = localStorage.getItem("UserId");
-    if(userId == null){
+    
+    if(!this._authService.IsUserLoggedIn()){
       this._router.navigate(['auth/login'])
       return
     }
