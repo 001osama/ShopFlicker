@@ -8,7 +8,7 @@
                 </svg>
             </button>
         </header>
-        <main *ngIf="!(this.loader.loaderStatus() | async)" class="h-[66%] px-4 pb-8">
+        <main *ngIf="!(this.loader.loaderStatus | async)" class="h-[66%] px-4 pb-8">
             <div class="heading text-medium-gray flex justify-between py-4">
                 <p>Product Details</p>
                 <p class="mr-6">Price</p>
@@ -38,7 +38,7 @@
         <footer class="border-t-2 border-medium-gray/25">
             <div class="flex justify-between text-offwhite px-4 py-4">
                 <p>Total</p>
-                <p>{{totalPrice}} Rs</p>
+                <p>{{total}} Rs</p>
             </div>
             <button (click)="checkout()" class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">Checkout</button>
         </footer>

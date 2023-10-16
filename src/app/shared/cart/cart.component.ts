@@ -18,7 +18,7 @@ export class CartComponent implements OnInit{
   apiUrl:string = environment.apiURL;
   carts:any[]=[];
   isCartOpen$: Observable<boolean> | undefined;
-  totalPrice!:number;
+  total!:number;
 
   constructor(
     public cartService: CartService, 
