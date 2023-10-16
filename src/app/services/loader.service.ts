@@ -4,15 +4,10 @@ import { BehaviorSubject, Observable } from "rxjs";
 @Injectable()
 export class LoaderService{
     loader = new BehaviorSubject(true);
-
-
+    public loaderStatus = this.loader.asObservable();
 
     showLoader(){
         this.loader.next(true);
-    }
-
-    loaderStatus(){
-        return this.loader.asObservable();
     }
     
     hideLoader(){
