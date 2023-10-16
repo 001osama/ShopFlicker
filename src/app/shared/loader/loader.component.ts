@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderService } from 'src/app/services/loader.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-loader',
@@ -14,10 +14,10 @@ import { BehaviorSubject } from 'rxjs';
 export class LoaderComponent implements OnInit, OnDestroy{
   private _loaderService = inject(LoaderService);
 
-  public loader!:BehaviorSubject<boolean>;
+  loader!:Observable<any>;
 
   ngOnInit(): void {
-    this.loader = this._loaderService.loader;
+    this.loader = this._loaderService.loaderStatus;
   }
 
   ngOnDestroy(): void {
