@@ -3,18 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
-  providers: [AuthService],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
   isOpen = false;
-  loggedIn:boolean= false;
+  loggedIn!:Observable<boolean>;
 
   constructor(
     private cart: CartService,
@@ -22,8 +22,10 @@ export class HeaderComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.loggedIn = this.authService.IsUserLoggedIn();
+    this.loggedIn = this.authService.userStatus$();
+    this.loggedIn.subscribe(x=>console.log(x));
   }
+  
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -54,6 +56,6 @@ export class HeaderComponent implements OnInit{
 
   logOut(){
     this.authService.logOut();
-    this.loggedIn = false;
+
   }
 }
