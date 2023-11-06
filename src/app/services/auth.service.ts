@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/environments/environment.development';
+import { ChangePasswordRequest } from '../models/changePasswordRequest';
 
 
 @Injectable({
@@ -49,5 +50,15 @@ export class AuthService{
     logOut(){
         localStorage.clear();
         this.isLoggedIn$.next(false);
+    }
+
+    resetPassword(email:string){
+        let body = new HttpParams();
+        body = body.set('email',email);
+        return this._http.post(`${environment.apiURL}/${this.url}/resetPassword`,body);
+    }
+
+    changePassword(resetPasswordRequest:ChangePasswordRequest){
+        return this._http.post(`${environment.apiURL}/${this.url}/changePassword`,resetPasswordRequest);
     }
 }
