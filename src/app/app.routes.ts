@@ -12,8 +12,20 @@ export const routes: Routes = [
         canActivate:[publicRouteGuard],
         path:'auth',
         loadChildren: () => import('./components/auth-layout/auth-layout-routing').then(
-            (r)=> r.authRoutes
+            (c)=> c.authRoutes
         )
+    },
+    {
+        path:'success',
+        loadComponent:() => import('./shared/payment-successful/payment-successful.component').then(
+            (c)=> c.PaymentSuccessfulComponent
+        ),
+    },
+    {
+        path:'unsuccess',
+        loadComponent:() => import('./shared/payment-unsuccessful/payment-unsuccessful.component').then(
+            (c)=> c.PaymentUnsuccessfulComponent
+        ),
     },
     {
         path:'**',
