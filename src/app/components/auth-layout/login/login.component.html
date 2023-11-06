@@ -21,7 +21,9 @@
             <div class="text-end mb-10">
                 <a routerLink="../forgetPassword" class="text-md text-medium-gray font-normal hover:text-main-orange">Forget Password?</a>
             </div>
-            <button [disabled]="form.invalid" class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover disabled:bg-main-orange-hover disabled:text-offwhite-hover w-full">Login</button>
+            <button [disabled]="form.invalid" class="bg-main-orange duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover disabled:bg-main-orange-hover disabled:text-offwhite-hover w-full">
+                {{sendingRequest ? "Logging In..." : "Login"}}
+            </button>
         </form>
 
         <div class="mt-4 text-center text-medium-gray">

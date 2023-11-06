@@ -41,10 +41,7 @@
                 <p>{{total| number:'1.2-2'}} Rs</p>
             </div>
             <button (click)="checkout()" [disabled]="sendingRequest" class="bg-main-orange disabled:cursor-default duration-500 text-offwhite rounded-full px-10 py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full">
-                <ng-container *ngIf="sendingRequest">
-                    Processing
-                </ng-container>
-                <ng-container *ngIf="!sendingRequest">Checkout</ng-container>
+                {{sendingRequest ? "Processing..." : "Checkout" }}
             </button>
         </footer>
     </div>

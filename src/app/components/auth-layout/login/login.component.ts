@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit,OnDestroy{
     private _fb: FormBuilder, 
     private authService: AuthService,
     private router: Router) {}
+    
+    sendingRequest = false;
 
     email = new FormControl('',[Validators.required, Validators.email]);
     password = new FormControl('',[Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d]).{8,}$/gm)]);
       
-
     
     ngOnInit(): void {
       this.form = this._fb.group({
@@ -36,13 +37,20 @@ export class LoginComponent implements OnInit,OnDestroy{
     }
     
     login(){
+      this.sendingRequest = true;
       this.result = this.authService.login(this.form.value).subscribe({
         next: res => {
             localStorage.setItem("Token",res.result.token);
             this.authService.loggedIn();
           },
-        error:(err) => console.error(err),
-        complete:() => this.router.navigate(['/products'])
+        error:(err) => {
+          console.error(err);
+          this.sendingRequest = false;
+        },
+        complete:() => {
+          this.router.navigate(['/products'])
+          .then(() => this.sendingRequest = false);
+        }
         });
         // console.log(this.form);
       }
