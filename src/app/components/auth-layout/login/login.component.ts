@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit,OnDestroy{
     private router: Router) {}
 
     email = new FormControl('',[Validators.required, Validators.email]);
-    password = new FormControl('',[Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
+    password = new FormControl('',[Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\d]).{8,}$/gm)]);
       
 
     

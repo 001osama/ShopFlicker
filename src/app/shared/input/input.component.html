@@ -7,9 +7,9 @@
     <div class="ml-[15px] text-red-600" *ngIf="control.dirty && control.touched">
         <p *ngIf="control.hasError('required')">Field is required</p>
         <p *ngIf="control.hasError('email')">Invalid Email</p>
-        <p *ngIf="control.hasError('pattern')" class="text-red-600">Password should contain: <br />- at least 8 characters
-            <br />- must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number
-            <br />- Can contain special characters
+        <p *ngIf="control.hasError('pattern')" class="text-red-600">Password should contain: <br />- at least 6 characters
+            <br />- an uppercase character, lowercase character, a digit, 
+            <br />- and a non-alphanumeric character
         </p>
     </div>
 </label>
