@@ -33,7 +33,7 @@ export class CartService extends BaseService{
   }
 
   removeItem(id:number){
-    return this.delete(`${this.url}/${id}`,id).subscribe();
+    return this.delete(`${this.url}/${id}`,id);
   }
 
   cartStatus(){
