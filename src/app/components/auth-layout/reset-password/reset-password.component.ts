@@ -30,7 +30,7 @@ export class ResetPasswordComponent {
     console.log(this.form.email);
     this._authService.resetPassword(this.form.email).subscribe(
       {
-        complete:()=>{
+        next:()=>{
           this._router.navigate(['/emailSent']);
           this.sendingRequest = true;
         },
