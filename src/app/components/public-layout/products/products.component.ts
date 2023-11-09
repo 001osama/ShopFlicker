@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
         {
             this.searchForm.get('search')?.valueChanges
             .pipe(
-                debounceTime(1500),
+                debounceTime(250),
                 distinctUntilChanged(),
                 switchMap( x => this._service.getProducts(x))
             )
