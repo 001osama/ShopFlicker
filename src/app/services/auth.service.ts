@@ -61,4 +61,6 @@ export class AuthService{
     changePassword(resetPasswordRequest:ChangePasswordRequest){
         return this._http.post(`${environment.apiURL}/${this.url}/changePassword`,resetPasswordRequest);
     }
+
+    
 }

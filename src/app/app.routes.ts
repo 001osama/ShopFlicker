@@ -34,6 +34,18 @@ export const routes: Routes = [
         ),
     },
     {
+        path:'passwordChangeSuccess',
+        loadComponent:() => import('./shared/password-change-success/password-change-success.component').then(
+            (c)=> c.PasswordChangeSuccessComponent
+        ),
+    },
+    {
+        path:'passwordChangeFailed',
+        loadComponent:() => import('./shared/password-change-unsuccess/password-change-unsuccess.component').then(
+            (c)=> c.PasswordChangeUnsuccessComponent
+        ),
+    },
+    {
         path:'**',
         pathMatch: 'full',
         redirectTo: ''

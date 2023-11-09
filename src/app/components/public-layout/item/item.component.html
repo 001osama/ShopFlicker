@@ -1,7 +1,7 @@
 <section class="flex flex-col">
     <div class="text-dark-gray">
-        <div class="h-28 sm:h-48 overflow-hidden">
-            <img class="sm:hover:scale-100 hover:scale-125  sm:scale-75 duration-700" [src]="apiUrl + product.imageUrl">
+        <div class="h-48 sm:h-64 md:h-52 overflow-hidden">
+            <img class="hover:scale-125 scale-100 sm:scale-75 sm:hover:scale-100 md:scale-100 md:hover:scale-125 lg:scale-75 lg:hover:scale-100 duration-700" [src]="apiUrl + product.imageUrl">
         </div>
         <p class="text-lg text-center mb-2">{{product.name}}</p>
         <p class="text-center mb-4">Rs. {{product.price| number:'1.2-2'}}</p>

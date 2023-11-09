@@ -70,7 +70,9 @@ export class CartComponent implements OnInit{
     this.cartService.checkout()
       .subscribe( x => {
         location.href = x.url;
-        this.sendingRequest = false;
+        setTimeout(() => {
+          this.sendingRequest = false;
+        }, 1000);
       })
   }
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from "../../../shared/input/input.component";
 import { PasswordValidator } from 'src/app/validators/password-match.validator';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
     selector: 'app-change-password',
@@ -21,15 +22,11 @@ export class ChangePasswordComponent implements OnInit{
   password = new FormControl('',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)]);
   confirmPassword = new FormControl('',Validators.required);
 
-
-  
-  
-  /**
-   *
-   */
   constructor(
+    private _authService:AuthService,
     private _activatedRoute:ActivatedRoute,
-    private _fb:FormBuilder
+    private _fb:FormBuilder,
+    private _router:Router
     ) {}
   
   ngOnInit(): void {
@@ -46,7 +43,7 @@ export class ChangePasswordComponent implements OnInit{
     
     this.form = this._fb.group({
       email: this.email,
-      token: this.token,
+      encodedToken: this.token,
       password: this.password,
       confirmPassword: this.confirmPassword
     },
@@ -55,6 +52,9 @@ export class ChangePasswordComponent implements OnInit{
 
   submit(){
     console.log(this.form.value);
+    this._authService.changePassword(this.form.value).subscribe({
+      complete:() => this._router.navigate(['./passwordChangeSuccess']),
+      error:() => this._router.navigate(['/passwordChangeFailed'])
+    })
   }
-
 }
