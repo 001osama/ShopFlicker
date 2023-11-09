@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/1df64a1b-547e-4bb3-b6c0-0e20927dccae/resourceGroups/shopFlickerDNM/providers/Microsoft.Web/sites/ShopFlicker",
+    "appService.deploySubpath": "dist\\shop-flicker"
+}
