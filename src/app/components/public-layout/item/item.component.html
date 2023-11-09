@@ -1,0 +1,23 @@
+<section class="flex flex-col">
+    <div class="text-dark-gray">
+        <div class="h-28 sm:h-48 overflow-hidden">
+            <img class="sm:hover:scale-100 hover:scale-125  sm:scale-75 duration-700" [src]="apiUrl + product.imageUrl">
+        </div>
+        <p class="text-lg text-center mb-2">{{product.name}}</p>
+        <p class="text-center mb-4">Rs. {{product.price| number:'1.2-2'}}</p>
+    </div>
+    <div class="flex justify-between items-center border-2 border-main-orange rounded-full py-2 px-6 mb-4">
+        <button class="hover:text-main-orange disabled:text-medium-gray" [disabled]="quantity<2" (click)="decreaseQuantity()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" viewBox="0 0 448 512">
+                <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/>
+            </svg>
+        </button>
+        <span class="text-dark-gray font-semibold">{{quantity}}</span>
+        <button class="hover:text-main-orange disabled:text-medium-gray" (click)="increaseQuantity()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" viewBox="0 0 448 512">
+                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+            </svg>
+        </button>
+    </div>
+    <button class="bg-main-orange duration-500 text-offwhite rounded-full py-2 hover:bg-main-orange-hover hover:text-offwhite-hover w-full" (click)="addToCart()">Add to Cart</button>
+</section>

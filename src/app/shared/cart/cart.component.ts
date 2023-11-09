@@ -1,21 +1,76 @@
-import { Component, Input } from '@angular/core';
+import { Component, DoCheck, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from 'src/app/services/cart.service';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
+import { LoaderService } from 'src/app/services/loader.service';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
-  selector: 'app-cart',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    standalone: true,
+    templateUrl: './cart.component.html',
+    providers: [LoaderService],
+    styleUrls: ['./cart.component.scss'],
+    imports: [CommonModule, LoaderComponent]
 })
-export class CartComponent{
-  constructor(private cart: CartService){}
-  
-  isCartOpen: boolean = this.cart.isCartOpen; 
+export class CartComponent implements OnInit{
+  sendingRequest = false;
+  apiUrl:string = environment.apiURL;
+  carts:any[]=[];
+  isCartOpen$: Observable<boolean> | undefined;
+  total!:number;
 
-  toggleCart(){
-    this.cart.toggleCart();
+  constructor(
+    public cartService: CartService, 
+    public loader:LoaderService
+  ){}
+  
+  ngOnInit(): void {
+    this.isCartOpen$ = this.cartService.cartStatus();
+    this.cartService.CartOpen$.subscribe((isOpen) => {
+      if(isOpen) {
+        this.getCartItems();
+      }
+    });
+  }
+
+  getCartItems() {
+    this.loader.showLoader();
+    this.cartService.getCartItems().subscribe(
+      {
+        next:(res) => {
+          this.carts = res.result;
+          this.total = this.carts.reduce((acc, cartItem) => acc + cartItem.totalPrice, 0);
+          console.log('total is '+this.total);
+        },
+        error:(err)=> console.error(err),
+        complete:()=>this.loader.hideLoader()
+      }
+    );
+  }
+
+
+  removeItem(id:number){
+    this.cartService.removeItem(id)
+    .subscribe(() => {
+      this.carts = this.carts.filter(x=> x.id != id),
+      this.total = this.carts.reduce((acc,cartItem)=> acc + cartItem.totalPrice,0)
+    });
+  }
+
+  
+  closeCart(){
+    this.cartService.hideCart();
   }
   
+
+  checkout(){
+    this.sendingRequest = true;
+    this.cartService.checkout()
+      .subscribe( x => {
+        location.href = x.url;
+        this.sendingRequest = false;
+      })
+  }
 }
