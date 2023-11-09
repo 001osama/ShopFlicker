@@ -6,8 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-email-sent',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './email-sent.component.html',
-  styleUrls: ['./email-sent.component.scss']
+  templateUrl: './email-sent.component.html'
 })
 export class EmailSentComponent {
 

@@ -8,8 +8,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-reset-password',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule],
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  templateUrl: './reset-password.component.html'
 })
 export class ResetPasswordComponent {
 

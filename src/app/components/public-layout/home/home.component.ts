@@ -8,8 +8,7 @@ import { EmailService } from 'src/app/services/email.service';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, RouterLink,FormsModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent {
 

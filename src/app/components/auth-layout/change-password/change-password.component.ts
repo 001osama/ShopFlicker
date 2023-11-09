@@ -10,7 +10,6 @@ import { AuthService } from 'src/app/services/auth.service';
     selector: 'app-change-password',
     standalone: true,
     templateUrl: './change-password.component.html',
-    styleUrls: ['./change-password.component.scss'],
     imports: [CommonModule, RouterLink, FormsModule, ReactiveFormsModule, InputComponent]
 })
 export class ChangePasswordComponent implements OnInit{

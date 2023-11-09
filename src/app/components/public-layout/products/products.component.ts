@@ -14,7 +14,6 @@ import { LoaderService } from 'src/app/services/loader.service';
     selector: 'app-products',
     standalone: true,
     templateUrl: './products.component.html',
-    styleUrls: ['./products.component.scss'],
     providers:[LoaderService],
     imports: [CommonModule, ItemComponent, ReactiveFormsModule, LoaderComponent]
 })

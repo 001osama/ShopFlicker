@@ -6,8 +6,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   selector: 'app-input',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  templateUrl: './input.component.html'
 })
 export class InputComponent {
   @Input() placeholder='';

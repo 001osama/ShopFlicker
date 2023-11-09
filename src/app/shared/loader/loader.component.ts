@@ -7,8 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   selector: 'app-loader',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  templateUrl: './loader.component.html'
 })
 
 export class LoaderComponent implements OnInit, OnDestroy{

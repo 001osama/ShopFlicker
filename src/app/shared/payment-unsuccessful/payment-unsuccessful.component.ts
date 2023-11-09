@@ -6,8 +6,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-payment-unsuccessful',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './payment-unsuccessful.component.html',
-  styleUrls: ['./payment-unsuccessful.component.scss']
+  templateUrl: './payment-unsuccessful.component.html'
 })
 export class PaymentUnsuccessfulComponent {
 

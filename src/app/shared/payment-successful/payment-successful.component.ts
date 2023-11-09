@@ -6,8 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-payment-successful',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './payment-successful.component.html',
-  styleUrls: ['./payment-successful.component.scss']
+  templateUrl: './payment-successful.component.html'
 })
 export class PaymentSuccessfulComponent {
 

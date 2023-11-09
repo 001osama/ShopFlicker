@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterLinkActive, RouterLink],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit{
   isOpen = false;

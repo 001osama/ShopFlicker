@@ -10,8 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   selector: 'app-item',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  templateUrl: './item.component.html'
 })
 export class ItemComponent {
 

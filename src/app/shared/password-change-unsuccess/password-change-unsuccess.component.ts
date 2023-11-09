@@ -6,8 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-password-change-unsuccess',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './password-change-unsuccess.component.html',
-  styleUrls: ['./password-change-unsuccess.component.scss']
+  templateUrl: './password-change-unsuccess.component.html'
 })
 export class PasswordChangeUnsuccessComponent {
 

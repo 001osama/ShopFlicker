@@ -10,7 +10,6 @@ import { InputComponent } from "../../../shared/input/input.component";
     selector: 'app-login',
     standalone: true,
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
     imports: [CommonModule, RouterLink, ReactiveFormsModule, InputComponent]
 })
 export class LoginComponent implements OnInit,OnDestroy{

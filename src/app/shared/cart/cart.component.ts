@@ -11,7 +11,6 @@ import { LoaderComponent } from "../loader/loader.component";
     standalone: true,
     templateUrl: './cart.component.html',
     providers: [LoaderService],
-    styleUrls: ['./cart.component.scss'],
     imports: [CommonModule, LoaderComponent]
 })
 export class CartComponent implements OnInit{
