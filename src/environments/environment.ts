@@ -1,1 +1,3 @@
-export const environment = {};
+export const environment = {
+    apiURL: "https://shopflickerapi.azurewebsites.net"
+};
